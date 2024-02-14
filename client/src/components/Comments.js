@@ -2,14 +2,15 @@ import React from "react";
 
 function Comments({ currentUser, comments }) {
   const handleCommentList = () => {
-    if (!comments) {
+    console.log(comments);
+    if (comments.length === 0) {
       return <div>No Comments</div>;
-    }
-    {
-      comments.map((comment) => {
-        if (comment.user_id == currentUser.id) {
-          return <span>{`${comment.comment_text}`}</span>;
+    } else {
+      return comments.map((comment) => {
+        if (comment.user_id === currentUser.id) {
+          return <div key={comment.id}>{comment.comment_text}</div>;
         }
+        return null; // Returning null for comments not belonging to the current user
       });
     }
   };

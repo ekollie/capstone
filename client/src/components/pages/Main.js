@@ -11,7 +11,7 @@ function Main() {
   return (
     <div>
       <Navbar currentUser={currentUser} />
-      <Map />
+      <Map currentUser={currentUser} />
     </div>
   );
 }

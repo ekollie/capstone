@@ -2,14 +2,15 @@ import React from "react";
 
 function Clovers({ currentUser, clovers }) {
   const handleCloverList = () => {
-    if (!clovers) {
+    console.log(clovers);
+    if (clovers.length === 0) {
       return <div>No Clovers</div>;
-    }
-    {
-      clovers.map((clover) => {
-        if (clover.user_id == currentUser.id) {
-          return <span>{`${clover.location}`}</span>;
+    } else {
+      return clovers.map((clover) => {
+        if (clover.founder_id === currentUser.id) {
+          return <div key={clover.id}>{clover.location}</div>;
         }
+        return null; // Returning null for clovers not belonging to the current user
       });
     }
   };
@@ -17,7 +18,7 @@ function Clovers({ currentUser, clovers }) {
   return (
     <div>
       <h1>Clovers</h1>
-      {handleCloverList}
+      {handleCloverList()}
     </div>
   );
 }
